@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
   color: #333333;
   background: #7c7c7c;
   font-synthesis: none;
@@ -296,7 +296,7 @@ input {
   left: auto;
   display: flex;
   flex-direction: column;
-  width: 546px;
+  width: 655px;
   height: auto;
   overflow: hidden;
   border-radius: 14px;
@@ -312,9 +312,9 @@ input {
   border-radius: 14px 14px 0 0;
   background: var(--header-blue);
   color: #111111;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.1px;
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: 0;
 }
 
 .conversation-panel {
@@ -372,9 +372,9 @@ input {
 }
 
 .bot-bubble {
-  width: min(360px, calc(100% - 12px));
+  width: min(460px, calc(100% - 12px));
   min-height: auto;
-  padding: 20px 22px 20px 18px;
+  padding: 20px 24px 20px 18px;
   gap: 13px;
   overflow: hidden;
   border-radius: 16px;
@@ -413,10 +413,11 @@ input {
 
 .bot-message-text {
   color: #111111;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 650;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-wrap: pretty;
 }
 
 .user-bubble {
@@ -447,10 +448,11 @@ input {
   position: relative;
   z-index: 1;
   color: #111111;
-  font-size: 13px;
-  font-weight: 750;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-wrap: pretty;
 }
 
 .timestamp {
@@ -561,7 +563,9 @@ input {
   outline: none;
   background: #ffffff;
   color: #2f343b;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .chat-input::placeholder {
