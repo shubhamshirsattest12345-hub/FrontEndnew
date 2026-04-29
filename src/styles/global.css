@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
 :root {
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+  font-family: "Manrope", "Segoe UI", Roboto, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
   color: #333333;
   background: #7c7c7c;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   --chat-blue: #ddc0ae;
   --header-blue: #ddc0ae;
   --blue-dark: #ddc0ae;
@@ -16,6 +19,7 @@
 
 * {
   box-sizing: border-box;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
 
 html,
@@ -316,8 +320,9 @@ input {
   background: var(--header-blue);
   color: #111111;
   font-size: 15px;
-  font-weight: 750;
-  letter-spacing: 0;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .conversation-panel {
@@ -420,8 +425,8 @@ input {
 .bot-message-text {
   color: #111111;
   font-size: 14px;
-  font-weight: 650;
-  letter-spacing: 0;
+  font-weight: 700;
+  letter-spacing: 0.005em;
   line-height: 1.45;
   text-wrap: pretty;
 }
@@ -455,8 +460,8 @@ input {
   z-index: 1;
   color: #111111;
   font-size: 14px;
-  font-weight: 650;
-  letter-spacing: 0;
+  font-weight: 700;
+  letter-spacing: 0.005em;
   line-height: 1.35;
   text-wrap: pretty;
 }
@@ -478,70 +483,88 @@ input {
 .avatar-bot {
   position: static;
   z-index: 1;
-  width: 42px;
-  height: 42px;
-  flex-basis: 42px;
+  width: 46px;
+  height: 46px;
+  flex-basis: 46px;
   transform: none;
-  border: 1px solid rgba(255, 255, 255, 0.48);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(224, 250, 250, 0.86));
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #f8f2ee;
   box-shadow: none;
 }
 
 .bot-assistant-icon {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
 }
 
-.assistant-card {
-  fill: var(--blue-mid);
+.assistant-badge {
+  fill: #f8f2ee;
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 1.4;
 }
 
-.assistant-dot {
-  fill: #111111;
-}
-
-.assistant-line {
+.assistant-antenna,
+.assistant-shine {
   fill: none;
-  stroke: #111111;
+  stroke: #9b735d;
   stroke-linecap: round;
   stroke-width: 3;
 }
 
-.assistant-spark {
-  fill: #f5e6dc;
-  stroke: #9b735d;
-  stroke-linejoin: round;
-  stroke-width: 1.4;
+.assistant-antenna-dot,
+.assistant-ear,
+.assistant-shell {
+  fill: var(--header-blue);
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 1.2;
+}
+
+.assistant-face {
+  fill: #07164f;
+}
+
+.assistant-eye {
+  fill: #10d6f7;
 }
 
 .avatar-user {
   position: relative;
   z-index: 1;
   display: inline-grid;
-  width: 33px;
-  height: 33px;
-  flex: 0 0 33px;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
   background: transparent;
   box-shadow: none;
 }
 
 .user-profile-icon {
-  width: 29px;
-  height: 29px;
+  width: 34px;
+  height: 34px;
 }
 
-.user-icon-bg {
-  fill: rgba(255, 255, 255, 0.16);
+.user-icon-badge {
+  fill: #f8f2ee;
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 1.4;
+}
+
+.user-icon-frame {
+  fill: var(--header-blue);
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 1.2;
 }
 
 .user-icon-head {
   fill: #111111;
 }
 
-.user-icon-body {
+.user-icon-body,
+.user-icon-tie {
   fill: none;
   stroke: #111111;
   stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-width: 4;
 }
 
@@ -570,8 +593,8 @@ input {
   background: #ffffff;
   color: #2f343b;
   font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 0;
+  font-weight: 500;
+  letter-spacing: 0.005em;
 }
 
 .chat-input::placeholder {
