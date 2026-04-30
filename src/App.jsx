@@ -1,8 +1,49 @@
+import { useState } from 'react';
 import { ChatWindow } from './components/ChatWindow/ChatWindow.jsx';
 
+const themes = [
+  {
+    id: 'sand',
+    label: 'Warm beige theme',
+    color: '#ddc0ae',
+  },
+  {
+    id: 'sky',
+    label: 'Sky blue theme',
+    color: '#8ccfed',
+  },
+  {
+    id: 'red',
+    label: 'Red theme',
+    color: '#e76868',
+  },
+];
+
 export default function App() {
+  const [selectedTheme, setSelectedTheme] = useState(themes[0]);
+  const themeStyle = {
+    '--chat-blue': selectedTheme.color,
+    '--header-blue': selectedTheme.color,
+    '--blue-dark': selectedTheme.color,
+    '--blue-mid': selectedTheme.color,
+    '--blue-light': selectedTheme.color,
+  };
+
   return (
-    <main className="app-shell">
+    <main className="app-shell" style={themeStyle}>
+      <div className="theme-selector" role="group" aria-label="Choose theme color">
+        {themes.map((theme) => (
+          <button
+            className={`theme-swatch${theme.id === selectedTheme.id ? ' theme-swatch-active' : ''}`}
+            key={theme.id}
+            type="button"
+            style={{ '--swatch-color': theme.color }}
+            aria-label={theme.label}
+            aria-pressed={theme.id === selectedTheme.id}
+            onClick={() => setSelectedTheme(theme)}
+          />
+        ))}
+      </div>
       <section className="chatbot-hero" aria-label="Chatbot assistant">
         <div className="chatbot-orbit" aria-hidden="true">
           <svg className="chatbot-mark" viewBox="0 0 240 210" focusable="false">
