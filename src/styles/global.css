@@ -69,72 +69,120 @@ input {
     box-shadow 220ms ease;
 }
 
-.theme-selector {
+.theme-toggle {
   position: fixed;
   top: 32px;
   left: 32px;
   z-index: 30;
-  display: flex;
+  appearance: none;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.24),
-    0 14px 36px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(10px);
-}
-
-.theme-swatch {
-  position: relative;
-  display: grid;
-  width: 38px;
-  height: 38px;
+  justify-content: flex-start;
+  width: 154px;
+  height: 46px;
   padding: 0;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 50%;
+  overflow: visible;
+  border: 1px solid color-mix(in srgb, var(--header-blue) 34%, rgba(255, 255, 255, 0.26));
+  border-radius: 999px;
   background:
-    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.72), transparent 30%),
-    var(--swatch-color);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 42%),
+    linear-gradient(180deg, #183859 0%, #0b2440 100%);
   box-shadow:
-    inset 0 -8px 14px rgba(0, 0, 0, 0.12),
-    0 6px 16px rgba(0, 0, 0, 0.16);
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -9px 18px rgba(0, 0, 0, 0.22),
+    0 12px 24px rgba(0, 0, 0, 0.22),
+    0 0 18px color-mix(in srgb, var(--header-blue) 26%, transparent);
+  color: #ffffff;
   cursor: pointer;
   transition:
-    box-shadow 170ms ease,
-    transform 170ms ease,
-    border-color 170ms ease;
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 170ms ease;
 }
 
-.theme-swatch::after {
-  position: absolute;
-  inset: -5px;
-  border: 2px solid transparent;
-  border-radius: inherit;
-  content: '';
-  transition:
-    border-color 170ms ease,
-    box-shadow 170ms ease;
-}
-
-.theme-swatch:hover {
+.theme-toggle:hover {
   transform: translateY(-1px);
-  box-shadow:
-    inset 0 -8px 14px rgba(0, 0, 0, 0.12),
-    0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.theme-swatch:focus-visible {
+.theme-toggle:focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.86);
   outline-offset: 5px;
 }
 
-.theme-swatch-active::after {
-  border-color: color-mix(in srgb, var(--swatch-color) 82%, #ffffff 18%);
-  box-shadow: 0 0 18px color-mix(in srgb, var(--swatch-color) 42%, transparent);
+.theme-toggle-label {
+  position: absolute;
+  right: 16px;
+  left: 60px;
+  z-index: 1;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 1px 7px rgba(0, 0, 0, 0.34);
+  text-transform: uppercase;
+  transition:
+    left 220ms ease,
+    right 220ms ease;
+  white-space: nowrap;
+}
+
+.theme-toggle-on .theme-toggle-label {
+  right: 60px;
+  left: 16px;
+}
+
+.football-toggle-ball {
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  z-index: 2;
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--header-blue);
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.24));
+  transform: translateY(-50%);
+  transition:
+    color 220ms ease,
+    left 220ms ease,
+    filter 220ms ease;
+}
+
+.theme-toggle-on .football-toggle-ball {
+  left: 102px;
+}
+
+.football-toggle-ball svg {
+  width: 100%;
+  height: 100%;
+}
+
+.football-base {
+  fill: color-mix(in srgb, var(--header-blue) 16%, #f8fbff 84%);
+  stroke: rgba(255, 255, 255, 0.78);
+  stroke-width: 1.6;
+  transition: fill 220ms ease;
+}
+
+.football-shine {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.72);
+  stroke-linecap: round;
+  stroke-width: 4;
+}
+
+.football-panel-main {
+  fill: color-mix(in srgb, var(--header-blue) 84%, #061a32 16%);
+  transition: fill 220ms ease;
+}
+
+.football-panel {
+  fill: color-mix(in srgb, var(--header-blue) 72%, #061a32 28%);
+  transition: fill 220ms ease;
 }
 
 .chatbot-hero {
@@ -750,16 +798,31 @@ input {
 }
 
 @media (max-width: 380px) {
-  .theme-selector {
+  .theme-toggle {
     top: 18px;
     left: 18px;
-    gap: 9px;
-    padding: 8px 10px;
+    width: 132px;
+    height: 40px;
   }
 
-  .theme-swatch {
-    width: 32px;
-    height: 32px;
+  .football-toggle-ball {
+    width: 50px;
+    height: 50px;
+  }
+
+  .theme-toggle-on .football-toggle-ball {
+    left: 86px;
+  }
+
+  .theme-toggle-label {
+    right: 13px;
+    left: 52px;
+    font-size: 13px;
+  }
+
+  .theme-toggle-on .theme-toggle-label {
+    right: 52px;
+    left: 13px;
   }
 
   .chat-window {

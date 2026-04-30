@@ -12,15 +12,11 @@ const themes = [
     label: 'Sky blue theme',
     color: '#8ccfed',
   },
-  {
-    id: 'red',
-    label: 'Red theme',
-    color: '#e76868',
-  },
 ];
 
 export default function App() {
   const [selectedTheme, setSelectedTheme] = useState(themes[0]);
+  const isSkyTheme = selectedTheme.id === 'sky';
   const themeStyle = {
     '--chat-blue': selectedTheme.color,
     '--header-blue': selectedTheme.color,
@@ -31,19 +27,27 @@ export default function App() {
 
   return (
     <main className="app-shell" style={themeStyle}>
-      <div className="theme-selector" role="group" aria-label="Choose theme color">
-        {themes.map((theme) => (
-          <button
-            className={`theme-swatch${theme.id === selectedTheme.id ? ' theme-swatch-active' : ''}`}
-            key={theme.id}
-            type="button"
-            style={{ '--swatch-color': theme.color }}
-            aria-label={theme.label}
-            aria-pressed={theme.id === selectedTheme.id}
-            onClick={() => setSelectedTheme(theme)}
-          />
-        ))}
-      </div>
+      <button
+        className={`theme-toggle${isSkyTheme ? ' theme-toggle-on' : ''}`}
+        type="button"
+        role="switch"
+        aria-checked={isSkyTheme}
+        aria-label={`Switch theme. Current theme is ${selectedTheme.label}.`}
+        onClick={() => setSelectedTheme(isSkyTheme ? themes[0] : themes[1])}
+      >
+        <span className="football-toggle-ball" aria-hidden="true">
+          <svg viewBox="0 0 64 64" focusable="false">
+            <circle className="football-base" cx="32" cy="32" r="29" />
+            <path className="football-shine" d="M18 13c8-5 20-5 28 0" />
+            <path className="football-panel-main" d="M31 17 45 26 40 43H24L19 26Z" />
+            <path className="football-panel" d="M9 29 19 26 24 43 15 50A28 28 0 0 1 9 29Z" />
+            <path className="football-panel" d="M55 29 45 26 40 43 49 50A28 28 0 0 0 55 29Z" />
+            <path className="football-panel" d="M17 9 31 17 19 26 7 22A28 28 0 0 1 17 9Z" />
+            <path className="football-panel" d="M47 9 31 17 45 26 57 22A28 28 0 0 0 47 9Z" />
+          </svg>
+        </span>
+        <span className="theme-toggle-label">Theam</span>
+      </button>
       <section className="chatbot-hero" aria-label="Chatbot assistant">
         <div className="chatbot-orbit" aria-hidden="true">
           <svg className="chatbot-mark" viewBox="0 0 240 210" focusable="false">
